@@ -268,8 +268,10 @@ Aşağıdakileri yapmak için fenomenGonderimSayisi'nı kullanın:
 */
 
 function fenomenGonderimSayisi(fenomenlerDizisi, profile) {
-  if ((fenomenlerDizisi.profile = profile)) {
-    return fenomenlerDizisi.posts;
+  for (let i = 0; i < fenomenlerDizisi.length; i++) {
+    if (fenomenlerDizisi[i].profile === profile) {
+      return fenomenlerDizisi[i].posts;
+    }
   }
 }
 console.log(fenomenGonderimSayisi(fenomenler, "Justin Bieber"));
