@@ -249,8 +249,10 @@ Aşağıdakileri yapmak için enFenomenler'yi kullanın:
 
 function enFenomenler(fenomenlerDizisi) {
   const enFenomenler = [];
-  for (let i = 0; i > fenomenlerDizisi.length; i++) {
-    if (fenomenlerDizisi[i].followers > 100000000) {
+  const follower = [];
+  follower.push(fenomenlerDizisi.followers);
+  for (let i = 0; i < follower.length; i++) {
+    if (follower[i] > 100000000) {
       return enFenomenler.push(fenomenlerDizisi[i].profile);
     }
   }
@@ -286,9 +288,16 @@ Not: Gönderi sayısı belli olmayan (NA) hesaba katmayın.
 Örnek: platformaGoreCokGonderiYapanFenomen(fenomenler, 'TikTok') çağrıldığında "charli damelio" dönmelidir
 */
 
-function platformaGoreCokGonderiYapanFenomen(/*kod*/) {
-  /*kod*/
+function platformaGoreCokGonderiYapanFenomen(fenomenlerDizisi, platform) {
+  const platformKullanicilari = [];
+  for (let i = 0; i < fenomenlerDizisi.length; i++) {
+    if (fenomenlerDizisi[i].platform === platform) {
+      platformKullanicilari.push(fenomenlerDizisi[i].posts);
+      return platformKullanicilari;
+    }
+  }
 }
+console.log(platformaGoreCokGonderiYapanFenomen(fenomenler, "Instagram"));
 
 /* ***** GÖREVLERİN SONU ***** */
 
