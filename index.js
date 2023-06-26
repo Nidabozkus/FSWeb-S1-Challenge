@@ -249,11 +249,9 @@ Aşağıdakileri yapmak için enFenomenler'yi kullanın:
 
 function enFenomenler(fenomenlerDizisi) {
   const enFenomenler = [];
-  const follower = [];
-  follower.push(fenomenlerDizisi.followers);
-  for (let i = 0; i < follower.length; i++) {
-    if (follower[i] > 100000000) {
-      return enFenomenler.push(fenomenlerDizisi[i].profile);
+  for (let i = 0; i < fenomenlerDizisi.length; i++) {
+    if (fenomenlerDizisi[i].followers > 100000000) {
+      enFenomenler.push(fenomenlerDizisi[i].profile);
     }
   }
   return enFenomenler;
@@ -276,7 +274,7 @@ function fenomenGonderimSayisi(fenomenlerDizisi, profile) {
     }
   }
 }
-console.log(fenomenGonderimSayisi(fenomenler, "Justin Bieber"));
+console.log(fenomenGonderimSayisi(fenomenler, "Will Smith"));
 /* Görev 9:
 Aşağıdakileri yapmak için platformaGoreCokGonderiYapanFenomen'ni kullanın:
 1. ilk parametre olarak fenomenler dizisini alın
@@ -289,15 +287,22 @@ Not: Gönderi sayısı belli olmayan (NA) hesaba katmayın.
 */
 
 function platformaGoreCokGonderiYapanFenomen(fenomenlerDizisi, platform) {
-  const platformKullanicilari = [];
+  let enCokGonderiYapan = {};
   for (let i = 0; i < fenomenlerDizisi.length; i++) {
+    let enCokGonderi = 0;
     if (fenomenlerDizisi[i].platform === platform) {
-      platformKullanicilari.push(fenomenlerDizisi[i].posts);
-      return platformKullanicilari;
+      if (
+        fenomenlerDizisi[i].posts != "NA" &&
+        fenomenlerDizisi[i].posts > enCokGonderi
+      ) {
+        enCokGonderiYapan = fenomenlerDizisi[i];
+        enCokGonderi = fenomenlerDizisi[i].posts;
+      }
     }
   }
+  return enCokGonderiYapan.profile;
 }
-console.log(platformaGoreCokGonderiYapanFenomen(fenomenler, "Instagram"));
+console.log(platformaGoreCokGonderiYapanFenomen(fenomenler, "TikTok"));
 
 /* ***** GÖREVLERİN SONU ***** */
 
